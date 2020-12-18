@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .wrap {
+            max-width: 1200px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: auto;
+        }
+
+        .wrap>img {
+            width: 100%;
+            position: fixed;
+            z-index: -1;
+        }
+
+        .title h1 {
+            color: #FFCB08;
+            -webkit-text-stroke: 3px #3363AE;
+            font-size: 140px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 5px 5px 0 #3363AE;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav button {
+            color: #f00;
+            padding: 10px 30px;
+            margin: 0 50px;
+            position: relative;
+            top: -5px;
+            background: radial-gradient(circle at 30% 20%, #34CEA7 20%, #64Ca97 20%, #94D998 60%);
+            border-radius: 40px;
+            font-size: 30px;
+            font-weight: bold;
+            box-shadow: 0px 5px 0 0 #333;
+            outline: none;
+            transition: .1s;
+        }
+
+        .nav button:hover {
+            top: -1px;
+            box-shadow: 0px 1px 0 0 #333;
+        }
+
+        #container {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #container img {
+            width: 23%;
+            background: url("./s-l400.jpg");
+            background-size: cover;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            margin: 10px 1%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <img src="./background.jpg">
+        <div class="title">
+            <h1>寶可夢圖鑑列表</h1>
+        </div>
+        <div class="nav">
+            <button onclick="fetchPokemon()">載入寶可夢圖鑑</button>
+            <button onclick="fetchPokemon_append()">載入寶可夢圖鑑列表</button>
+            <button onclick="reset()">清除</button>
+        </div>
+        <div id="container"></div>
+    </div>
+
+
+
+    <script>
+        let container = document.getElementById('container');
+        window.onload = appendPokemon();
+
+        function appendPokemon() {
+            let img = document.createElement('img');
+            img.setAttribute('src', "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png");
+            container.appendChild(img);
+        }
+
+
+        function fetchPokemon() {
+            let pokemons = '';
+            for (let i = 1; i < 890; i++) {
+                fileName = i.toString().padStart(3, '0');
+                pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
+                pokemons += `<img src='${pathFile}'>`;
+            }
+            container.innerHTML = pokemons;
+        }
+
+
+        function fetchPokemon_append() {
+            for (let i = 2; i < 890; i++) {
+                let img = document.createElement("img");
+                fileName = i.toString().padStart(3, "0");
+                pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
+                img.src = pathFile;
+                container.appendChild(img);
+            }
+        }
+
+        function reset() {
+            container.innerHTML = "";
+            appendPokemon();
+        }
+    </script>
+</body>
+
+</html>
