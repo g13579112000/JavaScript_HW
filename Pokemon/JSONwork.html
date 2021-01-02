@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+
+    <script>
+        Window.onload = getAppleJSON();
+        let appleJSON = [];
+        function getAppleJSON() {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                appleJSON = JSON.parse(this.responseText);
+
+            }
+            xhr.open("GET", "https://raw.githubusercontent.com/g13579112000/JS_TA_HomeWork/master/AppleStore/AppleStore.json", true);
+            xhr.send();
+        }
+        let Apple = {IPhone : 0,Ipad : 1 , mac : 1};
+        let IPhone = {};
+        let IPad = {};
+        let Mac = {};
+        
+        for(let i =0 ;i<5;i++){
+
+        }
+        console.log(i)
+
+
+
+        let iphone12_pro_memory = {};
+
+        function test(){
+            IPhone = appleJSON[0];
+            IPad = appleJSON[1];
+            Mac = appleJSON[2];
+
+            Apple = {IPhone,IPad,Mac};
+
+        }
+
+  
+
+
+
+    </script>
+
+</body>
+
+</html>

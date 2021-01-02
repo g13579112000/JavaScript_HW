@@ -1,0 +1,172 @@
+p {
+    margin: 0;
+}
+
+.header {
+    background: linear-gradient(rgba(10, 87, 10, 0.733), #fff);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: auto;
+}
+
+.Logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Logo h1 {
+    font-family: 'Pacifico', cursive;
+    color: rgb(230, 230, 94);
+    font-size: 80px;
+    line-height: 300px;
+}
+
+.Nav .row {
+    align-items: center;
+    justify-content: center;
+}
+
+.Check_Pokemon {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Check_Pokemon p {
+    padding: 0 10px 0 5px;
+    font-size: 14px;
+}
+
+.Check_Pokemon #Check_Pokemon_By {
+    width: 150px;
+}
+
+.Check_Pokemon label,
+.Sort_Pokemon label {
+    margin: 10px 5px;
+    width: 60px;
+    color: rgb(145, 105, 26);
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgba(224, 133, 171, 0.712);
+    text-align: center;
+    position: relative;
+    top: -5px;
+    box-shadow: 0 6px 0 0 #d7a;
+    transition: .3s;
+}
+
+.Check_Pokemon label:hover,
+.Sort_Pokemon label:hover {
+    top: -1px;
+    box-shadow: 0 2px 0 0 #d69;
+}
+
+.Sort_Pokemon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Sort_Pokemon p {
+    margin: 5px;
+}
+
+.Sort_Pokemon input {
+    margin: 0 0 0 8px;
+}
+
+.modal-header {
+    background: linear-gradient(rgba(209, 49, 62, 0.925), rgba(185, 123, 123, 0.26));
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.modal-header h5 {
+    font-size: 40px;
+    color: rgba(255, 240, 28, 0.986);
+    font-weight: bold;
+}
+
+.modal-dialog {
+    max-width: 720px;
+}
+
+.modal-pic_title {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+}
+
+.modal-pic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-pic_title p {
+    text-align: right;
+    padding: 5px 10px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #fa0;
+    color: rgb(88, 88, 88);
+}
+
+.modal-pic_title h4 {
+    padding: 0px 10px;
+    text-align: center;
+    font-size: 30px;
+    color: rgba(0, 0, 5, 0.637) !important;
+    font-weight: bold;
+    border-radius: 10px;
+    margin: 0;
+}
+
+.modal-txt p {
+    color: #333;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    border-bottom: 2px solid #eee;
+}
+
+.Card_btn {
+    margin: 10px;
+    padding: 0px 5px;
+    outline: none;
+    background-color: #fa0;
+    font-size: 12px;
+    font-weight: bold;
+}
+.Card_pic-box{
+    display:flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.Card_pic-box p{
+    font-size: 36px;
+    color: #f00;
+    font-weight: bold;
+}
+
+
+@media screen and (min-width:768px) {
+    .Logo h1 {
+        font-size: 180px;
+    }
+
+    .modal-txt p {
+        font-size: 26px;
+        padding: 20px 0 0 0;
+        text-align: left;
+    }
+
+    .Card_pic-box p{
+        font-size: 26px;
+    }
+}

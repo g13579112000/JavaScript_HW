@@ -68,7 +68,7 @@
             justify-content: center;
         }
 
-        #container .item{
+        #container .item {
             width: 23%;
             height: 100%;
             background: url("./s-l400.jpg");
@@ -76,8 +76,9 @@
             border-radius: 50%;
             background-repeat: no-repeat;
             margin: 10px 1%;
-            
+
         }
+
         #container .item img {
             width: 80%;
             padding: 25px 25px 25px;
@@ -90,7 +91,7 @@
 <body>
     <div class="wrap">
         <img src="./background.jpg">
-        <div class="title">
+        <div  class="title">
             <h1>寶可夢圖鑑列表</h1>
         </div>
         <div class="nav">
@@ -100,8 +101,7 @@
         </div>
         <div id="container"></div>
     </div>
-
-
+<img src="" alt="">
 
     <script>
         let container = document.getElementById('container');
@@ -112,7 +112,7 @@
             let div = document.createElement('div');
             let div2 = document.createElement('div');
             img.setAttribute('src', "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png");
-            div.className="item";
+            div.className = "item";
             div.appendChild(img);
             div.appendChild(div2);
             container.appendChild(div);
@@ -122,10 +122,16 @@
         function fetchPokemon() {
             let pokemons = '';
             for (let i = 1; i < 890; i++) {
+
+
+                
                 fileName = i.toString().padStart(3, '0');
                 pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
                 pokemons += `<div class="item"><img src='${pathFile}'></div>`;
             }
+
+
+
             container.innerHTML = pokemons;
         }
 
@@ -143,10 +149,56 @@
             }
         }
 
+
         function reset() {
             container.innerHTML = "";
             appendPokemon();
         }
+
+        window.onload = getPokemonJSON();
+        let pokemonArray = [];
+        let pokemonArrayNew = [];
+        function getPokemonJSON() {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                pokemonArray = JSON.parse(this.responseText);
+
+                // pokemonArrayNew.push(pokemonArray[0].id)
+                for(let i =0;i<780;i++){
+                    let pokemonitem = {};
+                    let id = pokemonArray[i].id;
+                    let name = pokemonArray[i].name.chinese;
+                    let hp = pokemonArray[i].base.HP;
+                    let attack = pokemonArray[i].base.Attack;
+                    let defense = pokemonArray[i].base.Defense;
+                    let sp_attack = pokemonArray[i].base["Sp. Attack"];
+                    let sp_defense = pokemonArray[i].base["Sp. Defense"];
+                    let speed = pokemonArray[i].base.Speed;
+                    pokemonitem.id = id;
+                    pokemonitem.name = name;
+                    pokemonitem.hp = hp;
+                    pokemonitem.attack = attack;
+                    pokemonitem.defense = defense;
+                    pokemonitem.sp_attack = sp_attack;
+                    pokemonitem.sp_defense = sp_defense;
+                    pokemonitem.speed = speed;
+                    pokemonArrayNew.push(pokemonitem)
+
+                }
+
+                
+
+
+            }
+            xhr.open("GET", "https://raw.githubusercontent.com/apprunner/pokemon.json/master/pokedex.json");
+            xhr.send();
+        }
+
+
+
+
+
+
     </script>
 </body>
 
